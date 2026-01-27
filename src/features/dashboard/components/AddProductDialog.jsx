@@ -34,11 +34,11 @@ export function AddProductDialog({ open, onOpenChange, newProduct, setNewProduct
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="price">Price ($)</Label>
+              <Label htmlFor="price">Price (MWK)</Label>
               <Input 
                 id="price" 
                 type="number" 
-                placeholder="0.00" 
+                placeholder="0" 
                 value={newProduct.price}
                 onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
               />
@@ -65,7 +65,7 @@ export function AddProductDialog({ open, onOpenChange, newProduct, setNewProduct
           </div>
         </div>
         <DialogFooter>
-          <Button onClick={onAddProduct} className="w-full">Create Product</Button>
+          <Button onClick={onAddProduct} className="w-full">Add Product</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

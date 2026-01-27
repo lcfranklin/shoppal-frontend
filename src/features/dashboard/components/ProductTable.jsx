@@ -46,7 +46,7 @@ export function ProductTable({ products, onRecordSale, onEdit, onDelete }) {
                     {product.category || 'Uncategorized'}
                   </Badge>
                 </TableCell>
-                <TableCell>${product.price}</TableCell>
+                <TableCell>MWK{product.price}</TableCell>
                 <TableCell>
                   <span className={cn(
                     "font-mono",

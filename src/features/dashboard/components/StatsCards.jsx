@@ -34,7 +34,7 @@ export function StatsCards({ stats }) {
           <DollarSign className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-green-600">${(stats.totalRevenue || 0).toLocaleString()}</div>
+          <div className="text-2xl font-bold text-green-600">MWK{(stats.totalRevenue || 0).toLocaleString()}</div>
           <p className="text-xs text-muted-foreground mt-1 flex items-center">
             <TrendingUp className="mr-1 h-3 w-3 text-green-500" />
             Real-time income
