@@ -6,6 +6,7 @@ import { ProductTable } from "../components/ProductTable"
 import { AddProductDialog } from "../components/AddProductDialog"
 import { RecordSaleDialog } from "../components/RecordSaleDialog"
 import { UpdateProductDialog } from "../components/UpdateProductDialog"
+import { RevenueAdjustmentDialog } from "../components/RevenueAdjustmentDialog"
 
 function DashboardPage() {
   const {
@@ -18,6 +19,8 @@ function DashboardPage() {
     setIsUpdateDialogOpen,
     isRecordSaleOpen,
     setIsRecordSaleOpen,
+    isRevenueAdjustmentOpen,
+    setIsRevenueAdjustmentOpen,
     selectedProduct,
     setSelectedProduct,
     saleDetails,
@@ -26,7 +29,8 @@ function DashboardPage() {
     handleAddProduct,
     handleUpdateProduct,
     handleDeleteProduct,
-    handleRecordSale
+    handleRecordSale,
+    handleAdjustRevenue
   } = useDashboard()
 
   return (
@@ -35,7 +39,7 @@ function DashboardPage() {
       
       <Separator />
 
-      <StatsCards stats={stats} />
+      <StatsCards stats={{ ...stats, onAdjustRevenue: () => setIsRevenueAdjustmentOpen(true) }} />
 
       <ProductTable 
         products={products} 
@@ -72,6 +76,12 @@ function DashboardPage() {
         saleDetails={saleDetails}
         setSaleDetails={setSaleDetails}
         onRecordSale={handleRecordSale}
+      />
+
+      <RevenueAdjustmentDialog
+        open={isRevenueAdjustmentOpen}
+        onOpenChange={setIsRevenueAdjustmentOpen}
+        onAdjustRevenue={handleAdjustRevenue}
       />
     </div>
   )
