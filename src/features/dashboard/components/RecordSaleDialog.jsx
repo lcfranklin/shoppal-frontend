@@ -18,7 +18,7 @@ export function RecordSaleDialog({ open, onOpenChange, selectedProduct, saleDeta
           <div className="flex items-center justify-between p-3 bg-muted rounded-lg border">
             <div className="space-y-0.5">
               <Label className="text-xs uppercase text-muted-foreground">Base Price</Label>
-              <div className="text-lg font-bold">${selectedProduct?.price}</div>
+              <div className="text-lg font-bold">MWK{selectedProduct?.price}</div>
             </div>
             <div className="space-y-0.5 text-right">
               <Label className="text-xs uppercase text-muted-foreground">Stock Available</Label>
@@ -56,7 +56,7 @@ export function RecordSaleDialog({ open, onOpenChange, selectedProduct, saleDeta
 
             {saleDetails.useSpecialPrice && (
               <div className="grid gap-2 animate-in slide-in-from-top-2 duration-200">
-                <Label htmlFor="specialPrice" className="text-blue-600">Enter Special Unit Price ($)</Label>
+                <Label htmlFor="specialPrice" className="text-blue-600">Enter Special Unit Price (MWK)</Label>
                 <Input 
                   id="specialPrice" 
                   type="number" 
@@ -76,7 +76,7 @@ export function RecordSaleDialog({ open, onOpenChange, selectedProduct, saleDeta
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Subtotal to add to Income:</span>
               <span className="font-bold text-primary text-xl">
-                ${(
+                MWK{(
                   (saleDetails.useSpecialPrice ? parseFloat(saleDetails.specialPrice || 0) : (selectedProduct?.price || 0)) 
                   * (parseInt(saleDetails.quantity || 0))
                 ).toLocaleString()}

@@ -57,7 +57,7 @@ export function ProductTable({ products, onRecordSale, onEdit, onDelete }) {
                 </TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
-                    {product.stockQuantity > 0 ? (
+                    {product.stockQuantity > 0 && (
                       <Button 
                         variant="outline" 
                         size="sm"
@@ -67,28 +67,25 @@ export function ProductTable({ products, onRecordSale, onEdit, onDelete }) {
                         <ReceiptText className="mr-1.5 h-3.5 w-3.5" />
                         Record Sale
                       </Button>
-                    ) : (
-                      <div className="flex gap-2">
-                        <Button 
-                          variant="secondary" 
-                          size="sm"
-                          className="opacity-0 group-hover:opacity-100 transition-opacity"
-                          onClick={() => onEdit(product)}
-                        >
-                          <Pencil className="mr-1.5 h-3.5 w-3.5" />
-                          Update
-                        </Button>
-                        <Button 
-                          variant="destructive" 
-                          size="sm"
-                          className="opacity-0 group-hover:opacity-100 transition-opacity"
-                          onClick={() => onDelete(product.id)}
-                        >
-                          <Trash2 className="mr-1.5 h-3.5 w-3.5" />
-                          Delete
-                        </Button>
-                      </div>
                     )}
+                    <Button 
+                      variant="secondary" 
+                      size="sm"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={() => onEdit(product)}
+                    >
+                      <Pencil className="mr-1.5 h-3.5 w-3.5" />
+                      Update
+                    </Button>
+                    <Button 
+                      variant="destructive" 
+                      size="sm"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={() => onDelete(product.id)}
+                    >
+                      <Trash2 className="mr-1.5 h-3.5 w-3.5" />
+                      Delete
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>

@@ -14,7 +14,7 @@ export const dashboardApi = {
   },
 
   getStats: () => {
-    return api.get('/stats');
+    return api.get('/api/dashboard/stats');
   },
 
   updateProduct: (id, product) => {
@@ -23,6 +23,10 @@ export const dashboardApi = {
 
   deleteProduct: (id) => {
     return api.delete(`/products/${id}`);
+  },
+
+  adjustRevenue: (amount, reason) => {
+    return api.post(`/api/dashboard/revenue/adjust?amount=${amount}&reason=${reason}`);
   }
 };
 
