@@ -60,7 +60,7 @@ export function UpdateProductDialog({ open, onOpenChange, product, onUpdate }) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="edit-price">Price ($)</Label>
+                <Label htmlFor="edit-price">Price (MWK)</Label>
                 <Input 
                   id="edit-price" 
                   type="number" 

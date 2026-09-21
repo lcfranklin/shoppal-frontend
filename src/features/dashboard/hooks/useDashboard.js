@@ -1,5 +1,5 @@
 import { DEFAULT_NEW_PRODUCT, DEFAULT_SALE_DETAILS } from '@/utils/constants'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { dashboardApi } from '../api/dashboardApi'
 
 export function useDashboard() {
@@ -17,6 +17,7 @@ export function useDashboard() {
   const [isRecordSaleOpen, setIsRecordSaleOpen] = useState(false)
   const [isAdjustRevenueOpen, setIsAdjustRevenueOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
+  // const [isRevenueAdjustmentOpen, setIsRevenueAdjustmentOpen] = useState(false)
   
   // Sale Recording State
   const [saleDetails, setSaleDetails] = useState(DEFAULT_SALE_DETAILS)
