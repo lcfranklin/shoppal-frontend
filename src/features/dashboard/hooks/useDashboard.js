@@ -1,5 +1,5 @@
 import { DEFAULT_NEW_PRODUCT, DEFAULT_SALE_DETAILS } from '@/utils/constants'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import { dashboardApi } from '../api/dashboardApi'
 
 export function useDashboard() {
@@ -35,9 +35,13 @@ export function useDashboard() {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const loadData = async () => {
+      await fetchData()
+    }
+
+    loadData()
+  }, []);
 
   const handleAddProduct = async () => {
     if (!newProduct.name || !newProduct.price || !newProduct.stockQuantity) return

@@ -23,6 +23,10 @@ export const dashboardApi = {
 
   deleteProduct: (id) => {
     return api.delete(`/products/${id}`);
+  },
+
+  adjustRevenue: (amount, type, reason) => {
+    return api.post(`/products/revenue/adjust?amount=${amount}&type=${type}&reason=${reason}`);
   }
 };
 
