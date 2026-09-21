@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Package, ShoppingCart, DollarSign, TrendingUp, AlertCircle } from "lucide-react"
+import { Package, ShoppingCart, TrendingUp, AlertCircle } from "lucide-react"
 
 export function StatsCards({ stats }) {
   return (
@@ -31,7 +31,7 @@ export function StatsCards({ stats }) {
       <Card className="border-l-4 border-l-green-500 shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-          <DollarSign className="h-4 w-4 text-muted-foreground" />
+          <div className="h-4 w-4 text-muted-foreground" >MK</div>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold text-green-600">${(stats.totalRevenue || 0).toLocaleString()}</div>

@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button"
 import { useDashboard } from "../hooks/useDashboard"
 import { DashboardHeader } from "../components/DashboardHeader"
 import { StatsCards } from "../components/StatsCards"
@@ -6,6 +7,7 @@ import { ProductTable } from "../components/ProductTable"
 import { AddProductDialog } from "../components/AddProductDialog"
 import { RecordSaleDialog } from "../components/RecordSaleDialog"
 import { UpdateProductDialog } from "../components/UpdateProductDialog"
+import { RevenueAdjustmentDialog } from "../components/RevenueAdjustmentDialog"
 
 function DashboardPage() {
   const {
@@ -18,6 +20,8 @@ function DashboardPage() {
     setIsUpdateDialogOpen,
     isRecordSaleOpen,
     setIsRecordSaleOpen,
+    isAdjustRevenueOpen,
+    setIsAdjustRevenueOpen,
     selectedProduct,
     setSelectedProduct,
     saleDetails,
@@ -26,7 +30,8 @@ function DashboardPage() {
     handleAddProduct,
     handleUpdateProduct,
     handleDeleteProduct,
-    handleRecordSale
+    handleRecordSale,
+    handleAdjustRevenue
   } = useDashboard()
 
   return (
@@ -35,7 +40,14 @@ function DashboardPage() {
       
       <Separator />
 
-      <StatsCards stats={stats} />
+      <div className="flex items-center justify-between">
+        <StatsCards stats={stats} />
+      </div>
+      <div className="flex justify-end">
+        <Button variant="outline" onClick={() => setIsAdjustRevenueOpen(true)}>
+          Adjust Revenue
+        </Button>
+      </div>
 
       <ProductTable 
         products={products} 
@@ -72,6 +84,12 @@ function DashboardPage() {
         saleDetails={saleDetails}
         setSaleDetails={setSaleDetails}
         onRecordSale={handleRecordSale}
+      />
+
+      <RevenueAdjustmentDialog
+        open={isAdjustRevenueOpen}
+        onOpenChange={setIsAdjustRevenueOpen}
+        onSubmit={handleAdjustRevenue}
       />
     </div>
   )

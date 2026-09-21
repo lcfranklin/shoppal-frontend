@@ -15,6 +15,7 @@ export function useDashboard() {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
   const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false)
   const [isRecordSaleOpen, setIsRecordSaleOpen] = useState(false)
+  const [isAdjustRevenueOpen, setIsAdjustRevenueOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   
   // Sale Recording State
@@ -33,9 +34,9 @@ export function useDashboard() {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   const handleAddProduct = async () => {
     if (!newProduct.name || !newProduct.price || !newProduct.stockQuantity) return
@@ -98,6 +99,17 @@ export function useDashboard() {
     }
   }
 
+  const handleAdjustRevenue = async ({ amount, type, reason }) => {
+    try {
+      await dashboardApi.adjustRevenue(amount, type, reason);
+      setIsAdjustRevenueOpen(false)
+      fetchData();
+    } catch (error) {
+      console.error("Failed to adjust revenue:", error);
+      alert(error.response?.data?.message || "Error adjusting revenue");
+    }
+  }
+
   return {
     products,
     newProduct,
@@ -108,6 +120,8 @@ export function useDashboard() {
     setIsUpdateDialogOpen,
     isRecordSaleOpen,
     setIsRecordSaleOpen,
+    isAdjustRevenueOpen,
+    setIsAdjustRevenueOpen,
     selectedProduct,
     setSelectedProduct,
     saleDetails,
@@ -116,7 +130,8 @@ export function useDashboard() {
     handleAddProduct,
     handleUpdateProduct,
     handleDeleteProduct,
-    handleRecordSale
+    handleRecordSale,
+    handleAdjustRevenue
   }
 }
 
